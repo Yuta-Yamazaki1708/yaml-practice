@@ -1,0 +1,172 @@
+# スカラー(値)
+  # - 文字列
+  # - a
+
+  # - 数値
+  # - 5
+
+  # - 真偽値
+  # - true ture/false, yes/no, on/off
+
+  # - null もしくは~
+
+  # - 日付
+  # - 2025-04-29
+
+  # - "555" 文字列
+
+  # - の後にはスペースが必要
+  # インデントはタブではなくスペース２つ
+
+# シーケンス(配列)
+  #　ブロックスタイル
+  # - a
+  # - b
+  # - c
+
+  # フロースタイル
+  # [a, b, 5]
+
+  # スカラー値を続けて書く
+  # 入れ子構造でも書ける
+  # - a
+  # - 
+  #   - b-1
+  #   - b-2
+  # - c
+
+# マッピング(ハッシュ)
+  # name: yamazaki
+  # email: yamazaki@example.com
+  # sex:male コロンの後に空白がないとエラーになる
+  # age : 29 コロンの後の空白は可能
+
+  # フロースタイルも可能
+  # {name: yamazaki, email: yamazaki@gamil.com}
+
+  #　入れ子構造もできる
+  # name:
+  #   first: yuta
+  #   last: yamazaki
+
+# シーケンスとマッピングは交互に入れ子構造にできる
+  # name:
+  #   - yuta
+  #   - yamazaki
+  # email:
+  #   - yamazaki@example.com
+  #   - yuta@example.com
+
+  # フロースタイルを織り交ぜることもできる
+  # name: [yuta, yamazaki]
+  # email: [yuta@example.com, yamazaki@example.com]
+
+  # マッピングのシーケンス
+  # - name: yuta
+  #   email: yuta@example.com
+  # - name: yamazaki
+  #   email: yamazaki@example.com
+
+  # フロースタイルでの書き換え
+  # - {name: yuta, email: yuta@example.com}
+  # - {name: yamazaki, email: yamazaki@example.com}
+
+# 改行を含むデータ
+  # このままでは一つの文字列と解釈される
+  # I
+  # am
+  # from
+  # Japan.
+
+  # 改行を保持
+  # 最後の改行を保持
+  # |
+  # I
+  # am
+  # from
+  # Japan
+
+  # 最後の改行を保持しない
+  # |-
+  # I
+  # am
+  # from
+  # Japan
+
+  # 最後の改行を追加
+  # |+
+  # I
+  # am
+  # from
+  # Japan
+
+  # 改行をスペースに変換
+  # 最後の改行を保持
+  # >
+  # I
+  # am
+  # from
+  # Japan
+
+  # 最後の改行を保持しない
+  # >-
+  # I
+  # am
+  # from
+  # Japan
+
+  # 最後の改行を追加
+  # >+
+  # I
+  # am
+  # from
+  # Japan
+
+# アンカーとエイリアス
+  # - &first yuta アンカー
+  # - *first エイリアス
+  # - &last yamazaki
+  # - *last
+  # - *last
+  # - *last
+  # - *last
+
+  # 例
+  # - &yuta
+  #   name: yuta
+  #   email: yuta@example.com
+  # - &yamazaki
+  #   name: yamazaki
+  #   email: yamazaki@example.com
+  #   friend: *yuta
+  # - &taro
+  #   name: taro
+  #   email: taro@example.com
+  #   friend: [*yuta, *yamazaki]
+
+# マッピングをアンカーにする
+  # common: &common
+  #   user: user
+  #   password: password
+  # development:
+  #   database: dev_db
+  #   <<: *common
+  # production:
+  #   database: prod_db
+  #   <<: *common
+  # test:
+  #   database: test_db
+  #   <<: *common
+
+# データの分割
+# ---
+# - a
+# - b
+# - c 
+# ...
+
+# ---
+# - 1
+# - 2
+# - 3
+# ...
